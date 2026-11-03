@@ -39,6 +39,18 @@ abstract class Operations
         return $this->http()->request('GET', '/bookings/' . rawurlencode($ref), [], null, null, null, []);
     }
 
+    /** Where the Canada forms stand on a case, and the forms filed, each with a 10-minute link. GET /cases/{id}/canada-forms */
+    public function getCanadaForms(string $id): mixed
+    {
+        return $this->http()->request('GET', '/cases/' . rawurlencode($id) . '/canada-forms', [], null, null, null, []);
+    }
+
+    /** Queue Canada’s IMM 5257 and IMM 5707 on a case: filled from the case, validated and read back. POST /cases/{id}/canada-forms */
+    public function requestCanadaForms(string $id): mixed
+    {
+        return $this->http()->request('POST', '/cases/' . rawurlencode($id) . '/canada-forms', [], null, null, null, []);
+    }
+
     /** A case’s finished file, with fresh links. GET /cases/{id}/file */
     public function getCaseFile(string $id): mixed
     {
@@ -99,7 +111,7 @@ abstract class Operations
         return $this->http()->request('GET', '/lodgements', [], null, null, null, []);
     }
 
-    /** Fill a visa application on the government portal, parked before the declarations (au-600) or the photo and signature (us-ds160). POST /lodgements */
+    /** Fill a visa application on the government portal, parked before the declarations (au-600, au-500) or the photo and signature (us-ds160). POST /lodgements */
     public function createLodgement(array $body, ?string $idempotencyKey = null): mixed
     {
         return $this->http()->request('POST', '/lodgements', [], $body, null, null, [], $idempotencyKey);
@@ -207,7 +219,7 @@ abstract class Operations
         return $this->http()->request('GET', '/students/compliance', ['as_of' => $asOf], null, null, null, []);
     }
 
-    /** Pre-CAS: a UK Student’s money against the Immigration Rules, each finding with its paragraph. POST /students/funds-check */
+    /** A student’s money against the study country’s rules (GB, CA, AU, US), each finding with its source. POST /students/funds-check */
     public function studentFundsCheck(array $body): mixed
     {
         return $this->http()->request('POST', '/students/funds-check', [], $body, null, null, []);

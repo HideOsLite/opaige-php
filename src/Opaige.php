@@ -11,7 +11,7 @@ namespace Opaige;
  *   $answer = $opaige->checkRequirements(passport: 'IN', destination: 'FR');
  *   $opaige->sendBookings(body: ['bookings' => [...]]);
  *
- * A sandbox key answers in the same shape and saves and bills nothing.
+ * A sandbox key answers in the same shape, is never billed and never touches live data.
  */
 final class Opaige extends Operations
 {
