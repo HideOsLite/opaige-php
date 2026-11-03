@@ -4,7 +4,26 @@
     "type": "library",
     "license": "MIT",
     "homepage": "https://opaige.com/developers",
-    "keywords": ["visa", "visa api", "travel", "immigration", "opaige"],
-    "require": { "php": ">=8.1", "ext-curl": "*", "ext-json": "*" },
-    "autoload": { "psr-4": { "Opaige\\": "src/" } }
+    "keywords": [
+        "visa",
+        "visa api",
+        "travel",
+        "immigration",
+        "opaige"
+    ],
+    "require": {
+        "php": ">=8.1",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Opaige\\": "src/"
+        }
+    },
+    "support": {
+        "source": "https://github.com/HideOsLite/opaige-php",
+        "issues": "https://github.com/HideOsLite/opaige-php/issues",
+        "docs": "https://opaige.com/developers"
+    }
 }
